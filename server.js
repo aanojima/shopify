@@ -31,8 +31,7 @@
 // app.listen(3000);
 // console.log("server listening");
 
-var express = require('express'),
-    h5bp = require('h5bp'),
+var express = require('express')
     http = require('http'),
   path = require('path');
 
@@ -59,7 +58,7 @@ app.engine('.html', require('ejs').renderFile);
 // app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('index.html');
+  res.render('homepage.html');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
