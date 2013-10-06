@@ -56,6 +56,13 @@ app.get('/test', function(req, res) {
   res.render('test');
 });
 
+app.post('/requests/new', function(req, res) {
+  insertRequest(req.body, function(err, results){
+    if (err) return -1;
+    else return results;
+});
+
+
 app.get('/test-query', function(req, res) {
   console.log(req.query);
   var query = req.query;

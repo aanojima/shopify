@@ -10,16 +10,16 @@ function initialize(){
 
 	var RequestSchema = mongoose.Schema({
 		id : String,
-		agent: String
+		agent: String,
 		client: String,
 		approved: Boolean,
 		purchased: Boolean,
 		delivered: Boolean,
-		done: Boolean
-		email : String
+		done: Boolean,
+		email : String,
 		item : String,
 		details : String,
-		offer : double,
+		offer : Number,
 		date: Date,
 		place : Object
 	});
@@ -42,6 +42,6 @@ exports = {
 		Request.create([newObject], callback);
 	},
 	updateRequest : function(field, value, update, callback){
-		Request.update({field : value}, {field : update}, {safe: true}, callback);
+		Request.update({field : value}, {$set : update}, {safe: true}, callback);
 	}
 };
