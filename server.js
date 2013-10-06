@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 // app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('test');
+  res.render('requests');
 });
 
 app.get('/feed', function(req, res){
