@@ -53,6 +53,13 @@ app.get('/test', function(req, res) {
   res.render('test');
 });
 
+app.post('/requests/new', function(req, res) {
+  insertRequest(req.body, function(err, results){
+    if (err) return -1;
+    else return results;
+});
+
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
