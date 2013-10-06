@@ -64,6 +64,43 @@ app.post('/requests/new', function(req, res) {
   });
 });
 
+app.post('requests/delete', function(req,res){
+  removeRequest(req.body, function(err, results){
+    if (err) throw err;
+    else return results;
+  });
+  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", purchased: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
+  var _yourAccs = [{client: "Tim the Beaver", address: "84 Mass Ave, Cambridge, MA 02139", item:"Sexy Socks", accepted: true, agent: "You", details:"The sexiest socks that exist", offer:8.00, place:"THE Sock Store, 9 Boylston St, Boston, MA 02215"}];
+
+  res.render('requests', {requestsPage: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
+})
+
+app.post('requests/itemAcquired', function(req,res){
+  updateRequest("id", req.body.id, {purchased: true, approved: false}, function(err, results){
+    if (err) throw err;results;
+  });
+  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", purchased: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
+  var _yourAccs = [{client: "Tim the Beaver", address: "84 Mass Ave, Cambridge, MA 02139", item:"Sexy Socks", accepted: true, agent: "You", details:"The sexiest socks that exist", offer:8.00, place:"THE Sock Store, 9 Boylston St, Boston, MA 02215"}];
+
+  res.render('requests', {requestsPage: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
+})
+
+app.post('requests/itemDelivered', function(req,res){
+  updateRequest("id", req.body.id, {delivered: true, purchased: false}, function(err, results){
+    if (err) throw err;
+  })
+  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", purchased: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
+  var _yourAccs = [{client: "Tim the Beaver", address: "84 Mass Ave, Cambridge, MA 02139", item:"Sexy Socks", accepted: true, agent: "You", details:"The sexiest socks that exist", offer:8.00, place:"THE Sock Store, 9 Boylston St, Boston, MA 02215"}];
+
+  res.render('requests', {requestsPage: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
+})
+
+app.post('requests/makePayment', function(req,res){
+  makePayment({"id", req.body.id, req.body.offer}, function(err, results, req.body){
+    
+  })
+})
+
 app.post('/user/new', function(req, res) {
   insertUser(req.body, function(err, results){
     if (err) throw err;
