@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-10 col-md-offset-1">
 		<div class="panel-group" id="sentRequests">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -15,14 +15,23 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="What do you want? Be specific!">
+										<span class="input-group-addon">Get me...</span>
+										<input type="text" class="form-control" placeholder="I don't know, some Jordans.">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="input-group">
+										<span class="input-group-addon">Any details?</span>
+										<input type="text" class="form-control" placeholder="I need the black ones, high top, with the velco straps...">
 									</div>
 								</div>
 							</div>
 							<div class="row">	
 								<div class="col-md-12">	
 									<div class="input-group">
-										<span class="input-group-addon">How much are you paying?</span>
+										<span class="input-group-addon">How much are you paying? $</span>
 										<input type="text" class="form-control" placeholder="0.00">
 									</div>
 								</div>
@@ -48,25 +57,30 @@
 								<div class="col-md-12">	
 									<form class="form-inline" role="form">
 									  <div class="form-group">
-									    <label class="sr-only" for="">Email address</label>
-									    <input type="" class="form-control" id="" placeholder="Enter email">
+									    <label class="sr-only" for="addressInput">Address</label>
+									    <div class="input-group">
+									    	<span class="input-group-addon">If yes:</span>
+									    	<input type="Address" class="form-control" id="addressInput" placeholder="Address">
+									  	</div>
 									  </div>
 									  <div class="form-group">
-									    <label class="sr-only" for="exampleInputPassword2">Password</label>
-									    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+									    <label class="sr-only" for="cityInput">Password</label>
+									    <input type="City" class="form-control" id="cityInput" placeholder="City">
 									  </div>
-									  <div class="checkbox">
-									    <label>
-									      <input type="checkbox"> Remember me
-									    </label>
+									  <div class="form-group">
+									    <label class="sr-only" for="stateInput">State</label>
+									    <input type="State" class="form-control" id="stateInput" placeholder="State">
 									  </div>
-									  <button type="submit" class="btn btn-default">Sign in</button>
+									  <div class="form-group">
+									    <label class="sr-only" for="zipInput">ZIP Code</label>
+									    <input type="ZIP" class="form-control" id="zipInput" placeholder="ZIP Code">
+									  </div>
 									</form>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3">
-							<button type="button" class="btn btn-primary">Send Request</button>
+						<div class="col-md-3 text-center">
+							<button type="button" class="btn btn-lg btn-primary" id="sendRequestButton">Send Request</button>
 						</div>
 					</div>
 				</div>
@@ -75,7 +89,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-5 col-md-offset-1">
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class=text-center>Your Submitted Requests</h2>
@@ -152,7 +166,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-5">
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class=text-center>Your Accepted Retrievals</h2>
@@ -250,3 +264,6 @@
 		</div>
 	</div>
 </div>
+<br>
+<br>
+<br>
