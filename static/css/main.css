@@ -105,6 +105,11 @@ body {
     text-align: center;
 }
 
+.credits {
+    color: #AAAAAA;
+    font-size: 12px;
+}
+
 #home-logo {
     margin-left: -42px;
 }

@@ -15,7 +15,13 @@
     "mongoose": "*",
     "request": "*"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "engine": "node >= 0.6.6",
+  "subdomain": "getme",
+  "scripts": {
+    "start": "node server.js"
   },
-  "engine": "node >= 0.6.6"
+  "engines": {
+    "node": "0.10.x"
+  }
 }
