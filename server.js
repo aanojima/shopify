@@ -38,11 +38,12 @@ app.get('/', function(req, res){
 app.get('/requests', function(req, res){
   var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", accepted: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
   var _yourAccs = [{client: "Tim the Beaver", address: "84 Mass Ave, Cambridge, MA 02139", item:"Sexy Socks", accepted: true, agent: "You", details:"The sexiest socks that exist", offer:8.00, place:"THE Sock Store, 9 Boylston St, Boston, MA 02215"}];
-  res.render('requests', {requests: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
+  res.render('requests', {requestsPage: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
 });
 
 app.get('/feed', function(req, res){
-  res.render('feed', {feed: true, title:'feed'});
+  var _reqs = [{client: "John Smith", item: "3 Gallons of Milk", open: true, details: "I really need 3 gals of milk. Thanks!", offer: 19.75, place: "Shaw's, Cambridge"}];
+  res.render('feed', {feedPage: true, title:'feed', requests: _reqs});
 });
 
 app.get('/test', function(req, res) {
