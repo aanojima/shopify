@@ -5,6 +5,8 @@ var express = require('express')
 
 var app = express();
 
+var API_KEY = "9fb36b1f3a0e8b4662f858516965c6bd27dddd64";
+
 // app.configure(function(){
 //   app.set('port', process.env.PORT || 3000);
 //   app.set('views', __dirname + '/views');
@@ -45,6 +47,17 @@ app.get('/feed', function(req, res){
 
 app.get('/test', function(req, res) {
   res.render('test');
+});
+
+app.get('/test-query', function(req, res) {
+  console.log(req.query);
+  var query = req.query;
+  var locu = require('locu');
+  var vclient = new locu.VenueClient(API_KEY);
+  vclient.search({name: query.name, postal_code: query.zip}, function(response) {
+    console.log(response);
+    res.send(response);
+  });
 });
 
 http.createServer(app).listen(app.get('port'), function(){
