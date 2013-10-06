@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 // app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('test');
+  res.render('homepage', {layout: false});
 });
 
 http.createServer(app).listen(app.get('port'), function(){
