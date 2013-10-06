@@ -33,14 +33,15 @@
 
 var express = require('express')
     http = require('http'),
-  path = require('path');
+    exphbs = require('express3-handlebars'),
+    path = require('path');
 
 var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
+  app.set('view engine', 'handlebars');
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -49,7 +50,9 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'static')));
 });
 
-app.engine('.html', require('ejs').renderFile);
+app.engine('handlebars', exphbs({defaultLayout: 'layout'}));
+
+app.engine('html', require('ejs').renderFile);
 
 // app.use(h5bp({ root: __dirname + '/public' }));
 
@@ -58,7 +61,7 @@ app.engine('.html', require('ejs').renderFile);
 // app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('homepage.html');
+  res.render('test');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

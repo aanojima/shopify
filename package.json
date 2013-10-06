@@ -8,7 +8,8 @@
     "express": ">2.5.2",
     "socket.io": "0.8.7",
     "jade": "*",
-    "ejs": "*"
+    "ejs": "*",
+    "express3-handlebars": "*"
   },
   "devDependencies": {
   },
