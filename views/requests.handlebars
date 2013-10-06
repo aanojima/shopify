@@ -1,4 +1,7 @@
 <div class="container">
+  {{#if paymentMade}}<div class="alert alert-success">
+    Payment made successfully!
+  </div>{{/if}}
   <div class="row">
       <div class="col-md-10 col-md-offset-1">
           <div class="panel-group" id="sentRequests">
@@ -101,7 +104,7 @@
           </div>
           
           {{#each yourRequests}}
-          <div class="row">
+          <div class="row" id="row-{{id}}">
               <div class="col-md-12">
                   <div class="panel">
                       <div class="col-md-9">
@@ -139,10 +142,11 @@
                       <div class="col-md-3">
                           <div class="row">
                               <div class="col-md-12 text-center">
-                                  {{#if open}}<button type="button" class="btn btn-danger button-center-vertical">Cancel Request</button>{{/if}}
+                                  <input type="hidden" name="userRequestID{{id}}" value='{{id}}'>
+                                  {{#if open}}<button type="button" class="btn btn-danger button-center-vertical cancelButton" id="cancelButton{{id}}">Cancel Request</button>{{/if}}
                                   {{#if accepted}}<button type="button" disabled="disabled" class="btn btn-default button-center-vertical">On the Way!</button>{{/if}}
-                                  {{#if purchased}}<button type="button" class="btn btn-info button-center-vertical">Pay with Venmo</button>{{/if}}
-                                  {{#if delivered}}<button type="button" class="btn btn-info button-center-vertical">Pay with Venmo</button>{{/if}}
+                                  {{#if purchased}}<button type="button" class="btn btn-info button-center-vertical venmoPayButton" id="venmoPay{{id}}">Pay with Venmo</button>{{/if}}
+                                  {{#if delivered}}<button type="button" class="btn btn-info button-center-vertical venmoPayButton" id="venmoPay{{id}}">Pay with Venmo</button>{{/if}}
                               </div>
                           </div>
                       </div>
@@ -208,7 +212,10 @@
                           </div>
                           <div class="row">
                               <div class="col-md-12 text-center">
-                                  <button type="button" class="btn btn-primary button-center-vertical">I got it!</button>
+                                  <input type="hidden" name="acceptedRequestID{{id}}" value='{{id}}'
+                                  {{#if accepted}}<button type="button" class="btn btn-primary button-center-vertical itemAquiredButton" id="itemPurchased{{id}}">I got it!</button>{{/if}}
+                                  {{#if purchased}}<button type="button" class="btn btn-primary button-center-vertical itemDeliveredButton" id="itemDelivered{{id}}">It's delivered!</button>{{/if}}
+                                  {{#if delivered}}<button type="button" class="btn btn-primary button-center-vertical" disabled="disabled">Check your Venmo</button>{{/if}}
                               </div>
                           </div>
                       </div>
