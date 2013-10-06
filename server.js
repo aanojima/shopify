@@ -39,6 +39,10 @@ app.get('/feed', function(req, res){
   res.render('feed');
 });
 
+app.get('/test', function(req, res) {
+  res.render('test');
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
