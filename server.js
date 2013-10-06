@@ -2,8 +2,10 @@ var express = require('express')
     http = require('http'),
     exphbs = require('express3-handlebars'),
     path = require('path'),
-    usersPath = require('./js/scheme_users'),
-    requestsPath = require('./js/scheme_requests');
+    request = require('request');
+    usersPath = require('./static/js/scheme_users'),
+    requestsPath = require('./static/js/scheme_requests'),
+    querystring = require("querystring");
 
 var app = express();
 
@@ -40,7 +42,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/requests', function(req, res){
-  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", accepted: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
+  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", purchased: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
   var _yourAccs = [{client: "Tim the Beaver", address: "84 Mass Ave, Cambridge, MA 02139", item:"Sexy Socks", accepted: true, agent: "You", details:"The sexiest socks that exist", offer:8.00, place:"THE Sock Store, 9 Boylston St, Boston, MA 02215"}];
   res.render('requests', {requestsPage: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
 });
@@ -55,6 +57,19 @@ app.get('/test', function(req, res) {
   res.render('test');
 });
 
+app.post('/requests/new', function(req, res) {
+  insertRequest(req.body, function(err, results){
+    if (err) throw err;
+    else return results;
+  });
+});
+
+app.post('/user/new', function(req, res) {
+  insertUser(req.body, function(err, results){
+    if (err) throw err;
+  })
+})
+
 app.get('/test-query', function(req, res) {
   console.log(req.query);
   var query = req.query;
@@ -63,6 +78,29 @@ app.get('/test-query', function(req, res) {
   vclient.search({name: query.name, postal_code: query.zip}, function(response) {
     console.log(response);
     res.send(response);
+  });
+});
+
+// Shawn Jain
+app.get('/api/venmoRedirect', function(req, res){
+  var code;
+  if(req.query.access_token){
+    code = req.query.access_token
+  }
+  var CLIENT_ID = 1438;
+  var CLIENT_SECRET = "JywRDZDANk5WnE2cvbsAas2E9ujHYKaD";
+  parameters = {client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code: code}
+  var base_url = "https://api.venmo.com/oauth/access_token"
+  var url = base_url + '?' + querystring.stringify(parameters)
+  var header = {
+    uri: url, 
+    method:"GET",
+  }
+  request(header, function(error, response, body){
+    console.log(body);
+    console.log(body.access_token);
+    //get user_id from session. save access_token into the venmo field.
+    
   });
 });
 

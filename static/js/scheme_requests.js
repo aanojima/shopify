@@ -10,38 +10,47 @@ function initialize(){
 
 	var RequestSchema = mongoose.Schema({
 		id : String,
-		agent: String
+		agent: String,
 		client: String,
 		approved: Boolean,
 		purchased: Boolean,
 		delivered: Boolean,
-		done: Boolean
-		email : String
+		done: Boolean,
+		email : String,
 		item : String,
 		details : String,
-		offer : double,
+		offer : Number,
 		date: Date,
 		place : Object
 	});
 
 	Request = mongoose.model("Request", RequestSchema, "Requests");
-
+	mongoose.disconnect();
 }
 
 exports = {
 	findOneRequest : function(field, value, callback){
+		mongoose.connect(CONNECTION_STRING);
 		Request.findOne({field : value}, callback);
 	},
 	findRequests : function(field, value, callback){
+		mongoose.connect(CONNECTION_STRING);
 		Request.find({field: value}, callback);
+		mongoose.disconnect();
 	},
 	removeRequest : function(field, value, callback){
+		mongoose.connect(CONNECTION_STRING);
 		Request.findOne({field: value}).remove(callback);
+		mongoose.disconnect();
 	},
 	insertRequest : function(newObject, callback){
+		mongoose.connect(CONNECTION_STRING);
 		Request.create([newObject], callback);
+		mongoose.disconnect();
 	},
 	updateRequest : function(field, value, update, callback){
-		Request.update({field : value}, {field : update}, {safe: true}, callback);
+		mongoose.connect(CONNECTION_STRING);
+		Request.update({field : value}, {$set : update}, {safe: true}, callback);
+		mongoose.disconnect();
 	}
 };

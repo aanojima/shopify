@@ -109,4 +109,48 @@ $(function() {
         } )
     });
 
+    $('.cancelButton').click(function(e){
+        e.preventDefault();
+
+        var id = $(this).id.substring(13);
+        var requestID = $("input[name=userRequestID"+id+"]").val();
+
+        $.post('/requests/delete', {id: requestID}, function(data){
+            $("#row-"+id).remove();
+        })
+    });
+
+    $('.venmoPayButton').click(function(e){
+        e.preventDefault();
+
+        var id = $(this).id.substring(9);
+        var requestID = $("input[name=userRequestID"+id+"]").val();
+
+        $.post('/requests/makePayment', {id: requestID}, function(data){
+
+        })
+    });
+
+    $('.itemAcquiredButton').click(function(e){
+        e.preventDefault();
+
+        var id = $(this).id.substring(14);
+        var requestID = $("input[name=acceptedRequestID"+id+"]").val();
+
+        $.post('/requests/itemAcquired', {id: requestID}, function(data){
+
+        })
+    });
+
+    $('.itemDeliveredButton').click(function(e){
+        e.preventDefault();
+
+        var id = $(this).id.substring(14);
+        var requestID = $("input[name=acceptedRequestID"+id+"]").val();
+
+        $.post('requests/itemDelivered', {id: requestID}, function(data){
+
+        })
+    });
+
 });
