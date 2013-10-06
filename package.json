@@ -10,7 +10,10 @@
     "jade": "*",
     "ejs": "*",
     "express3-handlebars": "*",
-    "locu": "*"
+    "locu": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "request": "*"
   },
   "devDependencies": {
   },
