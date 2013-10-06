@@ -9,7 +9,8 @@
     "socket.io": "0.8.7",
     "jade": "*",
     "ejs": "*",
-    "express3-handlebars": "*"
+    "express3-handlebars": "*",
+    "locu": "*"
   },
   "devDependencies": {
   },

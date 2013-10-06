@@ -33,6 +33,17 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req, res){
   res.render('homepage', {layout: false});
+
+app.get('/requests', function(req, res){
+  res.render('requests');
+});
+
+app.get('/feed', function(req, res){
+  res.render('feed');
+});
+
+app.get('/test', function(req, res) {
+  res.render('test');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
