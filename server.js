@@ -1,7 +1,9 @@
 var express = require('express')
     http = require('http'),
     exphbs = require('express3-handlebars'),
-    path = require('path');
+    path = require('path'),
+    usersPath = require('./js/scheme_users'),
+    requestsPath = require('./js/scheme_requests');
 
 var app = express();
 
@@ -42,6 +44,7 @@ app.get('/requests', function(req, res){
 });
 
 app.get('/feed', function(req, res){
+  
   var _reqs = [{client: "John Smith", item: "3 Gallons of Milk", open: true, details: "I really need 3 gals of milk. Thanks!", offer: 19.75, place: "Shaw's, Cambridge"}];
   res.render('feed', {feedPage: true, title:'feed', requests: _reqs});
 });

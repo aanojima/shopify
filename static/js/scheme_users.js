@@ -27,25 +27,23 @@ function initialize(){
 
 }
 
-function findOneUser(email, callback){
-	var output;
-	User.findOne({"email" : email}, callback);
-}
-
-function findUsers(field, value, callback){
-	var output;
-	User.find({field: value}, callback);
-	return output;
-}
-
-function removeUser(email, callback){
-	User.findOne({"email": email}).remove(callback);
-}
-
-function insertUser(newObject, callback){
-	User.create([newObject], callback);
-}
-
-function updateUser(email, field, update, callback){
-	User.update({"email" : email}, {field : update}, {safe: true}, callback);
-}
+exports = {
+	findOneUser : function (email, callback){
+		var output;
+		User.findOne({"email" : email}, callback);
+	},
+	findUsers : function(field, value, callback){
+		var output;
+		User.find({field: value}, callback);
+		return output;
+	},
+	removeUser : function(email, callback){
+		User.findOne({"email": email}).remove(callback);
+	},
+	insertUser : function(newObject, callback){
+		User.create([newObject], callback);
+	},
+	updateUser : function(email, field, update, callback){
+		User.update({"email" : email}, {field : update}, {safe: true}, callback);
+	}
+};
