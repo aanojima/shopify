@@ -3,7 +3,8 @@ var express = require('express')
     exphbs = require('express3-handlebars'),
     path = require('path'),
     usersPath = require('./js/scheme_users'),
-    requestsPath = require('./js/scheme_requests');
+    requestsPath = require('./js/scheme_requests'),
+    request = require('request');
 
 var app = express();
 
@@ -63,6 +64,27 @@ app.get('/test-query', function(req, res) {
   vclient.search({name: query.name, postal_code: query.zip}, function(response) {
     console.log(response);
     res.send(response);
+  });
+});
+
+// Shawn Jain
+app.get('/api/venmoRedirect', function(req, res){
+  var code;
+  if(req.query.access_token){
+    code = access_token
+  }
+  var CLIENT_ID = 1438;
+  var CLIENT_SECRET = "JywRDZDANk5WnE2cvbsAas2E9ujHYKaD";
+  parameters = {client_id: CLIENT_ID, client_secret: CLIENT_SECRET, code: code}
+  var base_url = "https://api.venmo.com/oauth/access_token"
+  var url = base_url + '?' + querystring.stringify(parameters)
+  var header = {
+    uri: url, 
+    method:"GET",
+  }
+  request(header, function(error, response, body){
+    console.log(body);
+    console.log(body.access_token);
   });
 });
 
