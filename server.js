@@ -92,6 +92,8 @@ app.get('/api/venmoRedirect', function(req, res){
   request(header, function(error, response, body){
     console.log(body);
     console.log(body.access_token);
+    //get user_id from session. save access_token into the venmo field.
+    
   });
 });
 
