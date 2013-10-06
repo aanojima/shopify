@@ -131,6 +131,10 @@ textarea {
     padding: 12px 0px;
 }
 
+.button-center-vertical {
+    margin-top: 50px;
+}
+
 .where {
     font-style: italic;
 }
