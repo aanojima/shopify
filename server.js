@@ -57,10 +57,16 @@ app.get('/test', function(req, res) {
 
 app.post('/requests/new', function(req, res) {
   insertRequest(req.body, function(err, results){
-    if (err) return -1;
+    if (err) throw err;
     else return results;
   });
 });
+
+app.post('/user/new', function(req, res) {
+  insertUser(req.body, function(err, results){
+    if (err) throw err;
+  })
+})
 
 app.get('/test-query', function(req, res) {
   console.log(req.query);
