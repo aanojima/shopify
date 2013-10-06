@@ -30,14 +30,14 @@ function findRequests(field, value, callback){
 	Request.find({field: value}, callback);
 }
 
-function removeRequest(field, value){
-	Request.findOne({field: value}).remove(function(){});
+function removeRequest(field, value, callback){
+	Request.findOne({field: value}).remove(callback);
 }
 
-function insertRequest(newObject){
-	Request.create([newObject], function(){});
+function insertRequest(newObject, callback){
+	Request.create([newObject], callback);
 }
 
-function updateRequest(field, value, update){
-	Request.update({field : value}, {field : update});
+function updateRequest(field, value, update, callback){
+	Request.update({field : value}, {field : update}, {safe: true}, callback);
 }
