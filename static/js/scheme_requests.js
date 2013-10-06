@@ -28,22 +28,20 @@ function initialize(){
 
 }
 
-function findOneRequest(field, value, callback){
-	Request.findOne({field : value}, callback);
-}
-
-function findRequests(field, value, callback){
-	Request.find({field: value}, callback);
-}
-
-function removeRequest(field, value, callback){
-	Request.findOne({field: value}).remove(callback);
-}
-
-function insertRequest(newObject, callback){
-	Request.create([newObject], callback);
-}
-
-function updateRequest(field, value, update, callback){
-	Request.update({field : value}, {field : update}, {safe: true}, callback);
-}
+exports = {
+	findOneRequest : function(field, value, callback){
+		Request.findOne({field : value}, callback);
+	},
+	findRequests : function(field, value, callback){
+		Request.find({field: value}, callback);
+	},
+	removeRequest : function(field, value, callback){
+		Request.findOne({field: value}).remove(callback);
+	},
+	insertRequest : function(newObject, callback){
+		Request.create([newObject], callback);
+	},
+	updateRequest : function(field, value, update, callback){
+		Request.update({field : value}, {field : update}, {safe: true}, callback);
+	}
+};

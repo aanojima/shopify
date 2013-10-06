@@ -37,23 +37,29 @@
                                             <input type="number" class="form-control" id="detailInput" placeHolder="0.00">
                                           </div>
                                         </div>
-                                        <div class="form-group">
-                                          <label class="sr-only" for "priceInput">Need a Location?</label>
-                                          <div class="input-group" id="addressGiven">
-                                            <span class="input-group-addon">Do you need it from somewhere specific?</span>
-                                            <span class="input-group-button btn-group">
-                                                <div class="btn-group" data-toggle="buttons">
-                                                    <label class="btn btn-primary">
-                                                        <input type="radio" name="store" id="storeYes" value="Yes"> Yes
-                                                    </label>
-                                                    <label class="btn btn-primary">
-                                                        <input type="radio" name="store" id="storeNo" checked value="No"> No
-                                                    </label>
-                                                </div>
-                                            </span>
+
+                                        <br>
+                                        <br>
+
+                                        <span id="specify-place">Specify a Business: </span>
+                                        <span id="selected-place"></span>
+                                        <a id="change-place" href="#">Change</a>
+                                        <a href='#' id='place-search-back'>Back</a>
+                                        <div id="search-form" class="form-inline" class="form-control">
+                                          <div class="form-group">
+                                            <label class="sr-only" for="venue-name">Venue Name</label>
+                                            <input type="text" class="form-control" id="venue-name" placeholder="Venue Name">
                                           </div>
+                                          <div class="form-group">
+                                            <label class="sr-only" for="zip-code">Zip Code</label>
+                                            <input type="number" class="form-control" id="zip-code" placeholder="Zip Code">
+                                          </div>
+                                          <button type="button" id='place-search-button' class="btn btn-default">Search</button>
                                         </div>
-                                        <div class="form-group">
+
+                                        <div class="list-group" id="search-results">
+                                        </div>
+                                        <!-- <div class="form-group">
                                           <label class="sr-only" for="addressInput">Address</label>
                                           <div class="input-group">
                                               <span class="input-group-addon">If yes:</span>
@@ -71,7 +77,7 @@
                                         <div class="form-group">
                                           <label class="sr-only" for="zipInput">ZIP Code</label>
                                           <input type="number" class="form-control" id="zipInput" placeholder="ZIP Code">
-                                        </div>
+                                        </div> -->
                                       </form>
                                   </div>
                               </div>

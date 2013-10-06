@@ -1,9 +1,13 @@
 var express = require('express')
     http = require('http'),
     exphbs = require('express3-handlebars'),
-    path = require('path');
+    path = require('path'),
+    usersPath = require('./js/scheme_users'),
+    requestsPath = require('./js/scheme_requests');
 
 var app = express();
+
+var API_KEY = "9fb36b1f3a0e8b4662f858516965c6bd27dddd64";
 
 // app.configure(function(){
 //   app.set('port', process.env.PORT || 3000);
@@ -42,6 +46,7 @@ app.get('/requests', function(req, res){
 });
 
 app.get('/feed', function(req, res){
+  
   var _reqs = [{client: "John Smith", item: "3 Gallons of Milk", open: true, details: "I really need 3 gals of milk. Thanks!", offer: 19.75, place: "Shaw's, Cambridge"}];
   res.render('feed', {feedPage: true, title:'feed', requests: _reqs});
 });
@@ -50,9 +55,21 @@ app.get('/test', function(req, res) {
   res.render('test');
 });
 
+
 app.post('/request/new', function(req, res){
 	// handle req.body
-})
+});
+
+app.get('/test-query', function(req, res) {
+  console.log(req.query);
+  var query = req.query;
+  var locu = require('locu');
+  var vclient = new locu.VenueClient(API_KEY);
+  vclient.search({name: query.name, postal_code: query.zip}, function(response) {
+    console.log(response);
+    res.send(response);
+  });
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
