@@ -162,9 +162,25 @@ body {
 }
 
 
+#search-form {
+    display: inline;
+}
 
+#search-results {
+    display: none;
+}
 
+#place-search-back {
+    display: none;
+}
 
+#selected-place {
+    display: none;
+}
+
+#change-place {
+    display:none;
+}
 
 
 /* ==========================================================================
