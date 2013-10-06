@@ -98,7 +98,10 @@ textarea {
    ========================================================================== */
 
 #navbar-logo {
-    color: #40C95A;
+    float: left;
+    color: #009F4A;
+    padding-top: 5px;
+    padding-right: 10px;
 }
 
 
