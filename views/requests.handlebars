@@ -1,122 +1,249 @@
 <div class="row">
-	<div class = "col-md-6">
+	<div class="col-md-12">
+		<div class="panel-group" id="sentRequests">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#sentRequests" href="#collapseNew">
+							<h2 class=text-center>Send a New Request</h2>
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<div class="col-md-9">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="What do you want? Be specific!">
+									</div>
+								</div>
+							</div>
+							<div class="row">	
+								<div class="col-md-12">	
+									<div class="input-group">
+										<span class="input-group-addon">How much are you paying?</span>
+										<input type="text" class="form-control" placeholder="0.00">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="input-group">
+										<span class="input-group-addon">Do you want it from somewhere specific?</span>
+										<span class="input-group-button btn-group">
+											<div class="btn-group" data-toggle="buttons">
+												<label class="btn btn-primary">
+													<input type="radio" name="store" id="storeYes"> Yes
+												</label>
+												<label class="btn btn-primary">
+													<input type="radio" name="store" id="storeNo"> No
+												</label>
+											</div>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">	
+									<form class="form-inline" role="form">
+									  <div class="form-group">
+									    <label class="sr-only" for="">Email address</label>
+									    <input type="" class="form-control" id="" placeholder="Enter email">
+									  </div>
+									  <div class="form-group">
+									    <label class="sr-only" for="exampleInputPassword2">Password</label>
+									    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+									  </div>
+									  <div class="checkbox">
+									    <label>
+									      <input type="checkbox"> Remember me
+									    </label>
+									  </div>
+									  <button type="submit" class="btn btn-default">Sign in</button>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-primary">Send Request</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class = "col-md-6">
+</div>
+<div class="row">
+	<div class="col-md-6">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Your Created Requests</h1>
+				<h2 class=text-center>Your Submitted Requests</h2>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="What do you want? Be specific!">
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-12">
+								<h4><b>Not Yet Accepted</b></h4>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="row">	
-					<div class="col-md-12">	
-						<div class="input-group">
-							<span class="input-group-addon">How much are you paying? Cost + commission = $</span>
-							<input type="text" class="form-control" placeholder="0.00">
+						<div class="row">
+							<div class="col-md-12">
+								<h4>Example Item 1</h4>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="input-group">
-							<span class="input-group-addon">Do you want it from somewhere specific?</span>
-							<input type="text" class="form-control" placeholder="No preference.">
+						<div class="row">
+							<div class="col-md-12">
+								Paying: $599.99
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-5">	
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Address">
-						</div>
-					</div>
-					<div class="col-md-4">		
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="City">
+						<div class="row">
+							<div class="col-md-12">
+								Store X, 99 Main Street, Nowhere, KS, 12345
+							</div>
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="State">
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-danger">Cancel Request</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-12">
+								<h4><b>Accepted by John Doe</b></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4>A lamp. Any lamp.</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								Paying: $50.00
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								No store preference.
+							</div>
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="ZIP">
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-success btn-block">Pay with Venmo</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<button type="button" class="btn btn-primary btn-lg btn-block">Send Request</button>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class=text-center>Your Accepted Retrievals</h2>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-12">
-						Example Item
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-12">
+								<h4><b>Jesse Perring</b></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4><i>64 Living Space Avenue, Nowhere, KS, 12346</i></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4>Example Item 3</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								Paying: $1,000.01
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								Store Y, 98 Main Street, Nowhere, KS, 12345
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						Paying: $599.99
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						Store X, 99 Main Street, Nowhere, KS, 12345
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="row">
-					<div class="col-md-12">
-						Not Yet Accepted
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<button type="button" class="btn btn-danger btn-lg btn-block">Cancel Request</button>
+					<div class="col-md-3">
+						<div class="row">
+							<div class="col-md-12">
+								Not Yet Retrieved
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-primary btn-block">I got it!</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-10">
-				<div class="row">
-					<div class="col-md-12">
-						Example Item 2
+			<div class="col-md-12">
+				<div class="panel">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-12">
+								<h4><b>Tim the Beaver</b></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4><i>77 Massachusetts Avenue, Cambridge, MA, 02139</i></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4>Example Item 4</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								Paying: $10.00
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								Dunkin' Donuts
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						Paying: $50.00
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						No store preference.
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="row">
-					<div class="col-md-12">
-						Accepted by John Doe
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<button type="button" class="btn btn-success btn-lg btn-block">Pay with Venmo</button>
+					<div class="col-md-3">
+						<div class="row">
+							<div class="col-md-12">
+								Payment received!
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-info btn-block">Venmo</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
