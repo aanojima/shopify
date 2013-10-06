@@ -1,8 +1,10 @@
-var request = require("request");
+var request = require("request"),
+querystring = require("querystring"), 
+_ = require('underscore')
 
 // var base_url = "https://api.venmo.com/" // real url
 var base_url = "https://sandbox-api.venmo.com/" // sandbox url
-var payments_endpoint = "payments/"
+var payments_endpoint = "payments"
 
 // Payments endpoint
 // see https://beta-developer.venmo.com/endpoints/payments 
@@ -10,12 +12,11 @@ var payments_endpoint = "payments/"
 // parameters is an object with access_token and 
 // (optionally) limit, after, before
 // callback is a function with parameters error, response, and body
-function getPayments(paramemters, callback){
-	var url = base_url + payments_endpoint 
+function getPayments(parameters, callback){
+	var url = base_url + payments_endpoint + "?" + querystring.stringify(parameters);
 	var header = {
 		uri: url, 
 		method:"GET",
-		form: parameters
 	}
 
 	request(header, function(error, response, body){
@@ -29,11 +30,10 @@ function getPayments(paramemters, callback){
 // and (optionally) audience
 // callback is a function with parameters error, response, and body
 function makePayment(parameters, callback){
-	var url = base_url + payments_endpoint 
+	var url = base_url + payments_endpoint + "?" + querystring.stringify(parameters);
 	var header = {
 		uri: url, 
 		method:"POST",
-		form: parameters
 	}
 
 	request(header, function(error, response, body){
@@ -42,15 +42,18 @@ function makePayment(parameters, callback){
 }
 
 // Gets details about a particular transaction
-// parameters is an object with access_token
-// and payment_id
+// parameters is an object with access_token.
+// Payment_id is an integer.
 // callback is a function with parameters error, response, and body
-function getPaymentDetails(parameters, callback){
-	var url = base_url + payments_endpoint + parameters.payment_id
+function getPaymentDetails(parameters, payment_id, callback){
+	// var tempobj = {access_token: parameters.access_token};
+	// console.log(tempobj)
+	var url = base_url + payments_endpoint + '/' + payment_id 
+		+ "?" + querystring.stringify(parameters);
+	console.log(url)
 	var header = {
 		uri: url, 
 		method:"GET",
-		form: parameters.access_token
 	}
 
 	request(header, function(error, response, body){
@@ -68,7 +71,7 @@ var ACCESS_TOKEN_QUERYSTRING = "?access_token="
 // callback is a function with parameters error, response, and body
 function me(parameters, callback){
 	var ME_ENDPOINT = "me"
-	var url = base_url + ME_ENDPOINT + ACCESS_TOKEN_QUERYSTRING + parameters.access_token
+	var url = base_url + ME_ENDPOINT + '?' + querystring.stringify(parameters)
 	var header = {
 		uri: url, 
 		method:"GET",
@@ -83,9 +86,10 @@ function me(parameters, callback){
 // parameters is an object with access_token 
 // and the other user's user_id
 // callback is a function with parameters error, response, and body
-function otherUser(parameters, callback){
-	var OTHER_USER_ENDPOINT = "users/:" + parameters.user_id
-	var url = base_url + OTHER_USER_ENDPOINT + ACCESS_TOKEN_QUERYSTRING + parameters.access_token
+function otherUser(parameters, user_id, callback){
+	var OTHER_USER_ENDPOINT = "users/" + user_id
+	var url = base_url + OTHER_USER_ENDPOINT + '?' + querystring.stringify(parameters)
+	console.log(url)
 	var header = {
 		uri: url, 
 		method:"GET"
@@ -100,9 +104,9 @@ function otherUser(parameters, callback){
 // parameters is an object with access_token, 
 // before, after, and limit
 // callback is a function with parameters error, response, and body
-function friends(parameters, callback){
-	var FRIENDS_ENDPOINT = "users/:" + parameters.user_id
-	var url = base_url + OTHER_USER_ENDPOINT + ACCESS_TOKEN_QUERYSTRING + parameters.access_token
+function friends(parameters, user_id, callback){
+	var FRIENDS_ENDPOINT = "users/" + user_id + "/friends"
+	var url = base_url + FRIENDS_ENDPOINT + '?' + querystring.stringify(parameters)
 	var header = {
 		uri: url, 
 		method:"GET"
@@ -112,3 +116,45 @@ function friends(parameters, callback){
 		return callback(error, response, body);
 	});
 }
+
+////
+//TESTS
+////
+
+//sj_token = '' // your token here
+
+// params_make = {access_token: sj_token,
+// user_id: 153136,
+// note: "test trans.",
+// amount: 0.10 };
+// makePayment(params_make, function(error, response, body){
+// 	console.log(makePayment);
+// 	console.log(body);
+// });
+
+// params_get = {access_token: sj_token}
+
+// getPayments(params_get, function (error, response, body) {
+// 	console.log(getPayments);
+// 	console.log(body);
+// });
+
+// params_get = {access_token: sj_token}
+// getPaymentDetails(params_get, 0, function(error, response, body){
+// 	console.log(body)
+// })
+
+// params_get = {access_token: sj_token}
+// me(params_get, function(error, response, body){
+// 	console.log(body)
+// })
+
+// params_get = {access_token: sj_token}
+// otherUser(params_get, 153136, function(error, response, body){
+// 	console.log(body)
+// });
+
+// params_get = {access_token: sj_token}
+// friends(params_get, 595288, function(error, response, body){
+// 	console.log(body)
+// });
