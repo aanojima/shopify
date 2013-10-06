@@ -97,15 +97,53 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#navbar-logo {
+    float: left;
+    color: #009F4A;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+
+.feed-profile-pic {
+    width: 100px;
+    height: 100px;
+}
+
+.feed-item {
+    border-bottom: 1px solid #888;
+    padding: 10px 0px;
+}
+
+.feed-item-body {
+    vertical-align: middle;
+    padding: 8px 0px;
+}
+
+.offer {
+    color: #009F4A;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0px;
+}
+
+.accept-unit {
+    padding: 12px 0px;
+}
+
+.button-center-vertical {
+    margin-top: 50px;
+}
+
+.where {
+    font-style: italic;
+}
 
 
-
-
-
-
-
-
-
+#feed-get-me {
+    text-align: center;
+    font-style: italic;
+}
 
 
 
