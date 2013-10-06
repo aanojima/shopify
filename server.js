@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.get('/', function(req, res){
   res.render('homepage', {layout: false});
+});
 
 app.get('/requests', function(req, res){
   res.render('requests');
