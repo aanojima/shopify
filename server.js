@@ -39,7 +39,7 @@ app.get('/feed', function(req, res){
   res.render('feed');
 });
 
-app.get('/test', function(req,res){
+app.get('/test', function(req, res) {
   res.render('test');
 });
 
