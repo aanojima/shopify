@@ -51,7 +51,7 @@ exports = {
 	},
 	updateUser : function(email, field, update, callback){
 		mongoose.connect(CONNECTION_STRING);
-		User.update({"email" : email}, {$set, update}, {safe: true}, callback);
+		User.update({"email" : email}, {$set: update}, {safe: true}, callback);
 		mongoose.disconnect();
 	}
 };
