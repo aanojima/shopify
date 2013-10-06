@@ -1,85 +1,28 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h2 id="feed-get-me">Get Me...</h2>
+
+    {{#each requests}}
     <div class="feed-item">
       <div class="media">
         <a class="pull-left" href="#">
           <img class="media-object feed-profile-pic" src="img/placeholder.jpg" alt="...">
         </a>
         <div class="pull-right accept-unit">
-          <p class="offer">$20</p>
+          <p class="offer">${{offer}}</p>
           <button class="btn accept-btn" href="#">Accept Offer</button>
         </div>
         <div class="media-body feed-item-body">
-          <h4 class="media-heading">Three Gallons of Milk</h4>
-          <span class="where">From: <span class="feed-loc">Shaw's</span></span>
+          <h4 class="media-heading">{{item}}</h4>
+          <span class="where">From: <span class="feed-loc">{{place}}</span></span>
           <br>
           <br>
-          I need 3 gallons of milk, preferrably 1% lowfat Shaw's brand.  Thanks!
+          {{details}}
         </div>
 
       </div>
     </div>
-
-    <div class="feed-item">
-      <div class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object feed-profile-pic" src="img/placeholder.jpg" alt="...">
-        </a>
-        <div class="pull-right accept-unit">
-          <p class="offer">$20</p>
-          <button class="btn accept-btn" href="#">Accept Offer</button>
-        </div>
-        <div class="media-body feed-item-body">
-          <h4 class="media-heading">Three Gallons of Milk</h4>
-          <span class="where">From: <span class="feed-loc">Shaw's</span></span>
-          <br>
-          <br>
-          I need 3 gallons of milk, preferrably 1% lowfat Shaw's brand.  Thanks!
-        </div>
-
-      </div>
-    </div>
-
-    <div class="feed-item">
-      <div class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object feed-profile-pic" src="img/placeholder.jpg" alt="...">
-        </a>
-        <div class="pull-right accept-unit">
-          <p class="offer">$20</p>
-          <button class="btn accept-btn" href="#">Accept Offer</button>
-        </div>
-        <div class="media-body feed-item-body">
-          <h4 class="media-heading">Three Gallons of Milk</h4>
-          <span class="where">From: <span class="feed-loc">Shaw's</span></span>
-          <br>
-          <br>
-          I need 3 gallons of milk, preferrably 1% lowfat Shaw's brand.  Thanks!
-        </div>
-
-      </div>
-    </div>
-
-    <div class="feed-item">
-      <div class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object feed-profile-pic" src="img/placeholder.jpg" alt="...">
-        </a>
-        <div class="pull-right accept-unit">
-          <p class="offer">$20</p>
-          <button class="btn accept-btn" href="#">Accept Offer</button>
-        </div>
-        <div class="media-body feed-item-body">
-          <h4 class="media-heading">Three Gallons of Milk</h4>
-          <span class="where">From: <span class="feed-loc">Shaw's</span></span>
-          <br>
-          <br>
-          I need 3 gallons of milk, preferrably 1% lowfat Shaw's brand.  Thanks!
-        </div>
-
-      </div>
-    </div>
+    {{/each}}
 
   </div>
 

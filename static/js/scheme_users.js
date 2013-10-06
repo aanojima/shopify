@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var CONNECTION_STRING = "mongodb://localhost";
+var CONNECTION_STRING = "mongodb://nodejitsu_ericschmidt:rbkehkot5da21686s6vag70l8f@ds045998.mongolab.com:45998/nodejitsu_ericschmidt_nodejitsudb5211104003";
 mongoose.connect(CONNECTION_STRING);
 var User;
 var db = mongoose.connection;
@@ -20,35 +20,30 @@ function initialize(){
 		},
 		biography: String,
 		password: String,
-		payment: {
-			service: String,
-			serial: String
-		}
+		payment: String
 	});
 
 	User = mongoose.model("User", UserSchema, "Users");
 
 }
 
-function findOneUser(email, callback){
-	var output;
-	User.findOne({"email" : email}, callback);
-}
-
-function findUsers(field, value, callback){
-	var output;
-	User.find({field: value}, callback);
-	return output;
-}
-
-function removeUser(email){
-	User.findOne({"email": email}).remove(function(){});
-}
-
-function insertUser(newObject){
-	User.create([newObject], function(){});
-}
-
-function updateUser(email, field, update){
-	User.update({"email" : email}, {field : update});
-}
+exports = {
+	findOneUser : function (email, callback){
+		var output;
+		User.findOne({"email" : email}, callback);
+	},
+	findUsers : function(field, value, callback){
+		var output;
+		User.find({field: value}, callback);
+		return output;
+	},
+	removeUser : function(email, callback){
+		User.findOne({"email": email}).remove(callback);
+	},
+	insertUser : function(newObject, callback){
+		User.create([newObject], callback);
+	},
+	updateUser : function(email, field, update, callback){
+		User.update({"email" : email}, {field : update}, {safe: true}, callback);
+	}
+};

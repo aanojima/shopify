@@ -10,10 +10,16 @@ function initialize(){
 
 	var RequestSchema = mongoose.Schema({
 		id : String,
+		agent: String
+		client: String,
+		approved: Boolean,
+		purchased: Boolean,
+		delivered: Boolean,
+		done: Boolean
 		email : String
-		title : String,
+		item : String,
 		details : String,
-		price : double,
+		offer : double,
 		date: Date,
 		place : Object
 	});
@@ -22,22 +28,20 @@ function initialize(){
 
 }
 
-function findOneRequest(field, value, callback){
-	Request.findOne({field : value}, callback);
-}
-
-function findRequests(field, value, callback){
-	Request.find({field: value}, callback);
-}
-
-function removeRequest(field, value){
-	Request.findOne({field: value}).remove(function(){});
-}
-
-function insertRequest(newObject){
-	Request.create([newObject], function(){});
-}
-
-function updateRequest(field, value, update){
-	Request.update({field : value}, {field : update});
-}
+exports = {
+	findOneRequest : function(field, value, callback){
+		Request.findOne({field : value}, callback);
+	},
+	findRequests : function(field, value, callback){
+		Request.find({field: value}, callback);
+	},
+	removeRequest : function(field, value, callback){
+		Request.findOne({field: value}).remove(callback);
+	},
+	insertRequest : function(newObject, callback){
+		Request.create([newObject], callback);
+	},
+	updateRequest : function(field, value, update, callback){
+		Request.update({field : value}, {field : update}, {safe: true}, callback);
+	}
+};
