@@ -44,6 +44,6 @@ exports = {
 		User.create([newObject], callback);
 	},
 	updateUser : function(email, field, update, callback){
-		User.update({"email" : email}, {field : update}, {safe: true}, callback);
+		User.update({"email" : email}, {$set, update}, {safe: true}, callback);
 	}
 };
