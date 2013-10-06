@@ -61,7 +61,7 @@ app.engine('html', require('ejs').renderFile);
 // app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
-  res.render('test');
+  res.render('requests');
 });
 
 http.createServer(app).listen(app.get('port'), function(){
