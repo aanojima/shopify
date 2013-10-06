@@ -41,14 +41,14 @@ function findUsers(field, value, callback){
 	return output;
 }
 
-function removeUser(email){
-	User.findOne({"email": email}).remove(function(){});
+function removeUser(email, callback){
+	User.findOne({"email": email}).remove(callback);
 }
 
-function insertUser(newObject){
-	User.create([newObject], function(){});
+function insertUser(newObject, callback){
+	User.create([newObject], callback);
 }
 
-function updateUser(email, field, update){
-	User.update({"email" : email}, {field : update});
+function updateUser(email, field, update, callback){
+	User.update({"email" : email}, {field : update}, {safe: true}, callback);
 }
