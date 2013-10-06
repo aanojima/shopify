@@ -2,9 +2,10 @@ var express = require('express')
     http = require('http'),
     exphbs = require('express3-handlebars'),
     path = require('path'),
-    usersPath = require('./js/scheme_users'),
-    requestsPath = require('./js/scheme_requests'),
     request = require('request');
+    usersPath = require('./static/js/scheme_users'),
+    requestsPath = require('./static/js/scheme_requests'),
+    querystring = require("querystring");
 
 var app = express();
 
@@ -41,7 +42,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/requests', function(req, res){
-  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", accepted: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
+  var _yourReqs = [{client: "You", item:"A Lamp. Any lamp.", purchased: true, agent: "John Doe", details:"Seriously tho", offer:17.00, place:"XYY, 3 SD Dr, City, ST 59375"}];
   var _yourAccs = [{client: "Tim the Beaver", address: "84 Mass Ave, Cambridge, MA 02139", item:"Sexy Socks", accepted: true, agent: "You", details:"The sexiest socks that exist", offer:8.00, place:"THE Sock Store, 9 Boylston St, Boston, MA 02215"}];
   res.render('requests', {requestsPage: true, title: 'requests', yourRequests: _yourReqs, yourAcceptances: _yourAccs});
 });
@@ -60,8 +61,8 @@ app.post('/requests/new', function(req, res) {
   insertRequest(req.body, function(err, results){
     if (err) return -1;
     else return results;
+  });
 });
-
 
 app.get('/test-query', function(req, res) {
   console.log(req.query);
@@ -78,7 +79,7 @@ app.get('/test-query', function(req, res) {
 app.get('/api/venmoRedirect', function(req, res){
   var code;
   if(req.query.access_token){
-    code = access_token
+    code = req.query.access_token
   }
   var CLIENT_ID = 1438;
   var CLIENT_SECRET = "JywRDZDANk5WnE2cvbsAas2E9ujHYKaD";
