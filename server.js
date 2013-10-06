@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 // app.use(express.compress());
 // app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res){
+app.get('/requests', function(req, res){
   res.render('requests');
 });
 
