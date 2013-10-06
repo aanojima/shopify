@@ -85,6 +85,7 @@
           </div>
       </div>
   </div>
+
   <div class="row">
       <div class="col-md-5 col-md-offset-1">
           <div class="row" id="submittedRequestsTitleRow">
@@ -93,132 +94,110 @@
               </div>
           </div>
           
+          {{#each yourRequests}}
           <div class="row">
               <div class="col-md-12">
                   <div class="panel">
                       <div class="col-md-9">
                           <div class="row">
                               <div class="col-md-12">
-                                  <h4><b>Not Yet Accepted</b></h4>
+                                  <h4><b>
+                                    {{#if open}}Not Yet Accepted{{/if}}
+                                    {{#if accepted}}Accepted by {{agent}}{{/if}}
+                                    {{#if purchased}}Purchased by {{agent}}{{/if}}
+                                    {{#if delivered}}Delivered by {{agent}}{{/if}}
+                                  </b></h4>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  <h4>Example Item 1</h4>
+                                  <h4>{{item}}</h4>
                               </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
-                              Details on Example Item 1
+                              {{details}}
                             </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  Paying: $599.99
+                                  Paying: ${{offer}}
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  Store X, 99 Main Street, Nowhere, KS, 12345
+                                  {{place}}
                               </div>
                           </div>
                       </div>
                       <div class="col-md-3">
                           <div class="row">
                               <div class="col-md-12 text-center">
-                                  <button type="button" class="btn btn-danger button-center-vertical">Cancel Request</button>
+                                  {{#if open}}<button type="button" class="btn btn-danger button-center-vertical">Cancel Request</button>{{/if}}
+                                  {{#if accepted}}<button type="button" disabled="disabled" class="btn btn-default button-center-vertical">On the Way!</button>{{/if}}
+                                  {{#if purchased}}<button type="button" class="btn btn-info button-center-vertical">Pay with Venmo</button>{{/if}}
+                                  {{#if delivered}}<button type="button" class="btn btn-info button-center-vertical">Pay with Venmo</button>{{/if}}
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="panel">
-                      <div class="col-md-9">
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h4><b>Accepted by John Doe</b></h4>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h4>A lamp. Any lamp.</h4>
-                              </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              Seriously. Any lamp.
-                            </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  Paying: $50.00
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  No store preference.
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-3">
-                          <div class="row">
-                              <div class="col-md-12 text-center">
-                                  <button type="button" class="btn btn-success button-center-vertical">Pay with Venmo</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+          {{/each}}
+
       </div>
+
       <div class="col-md-5">
           <div class="row">
               <div class="col-md-12">
                   <h2 class=text-center>Your Accepted Retrievals</h2>
               </div>
           </div>
+
+          {{#each yourAcceptances}}
           <div class="row">
               <div class="col-md-12">
                   <div class="panel">
                       <div class="col-md-9">
                           <div class="row">
                               <div class="col-md-12">
-                                  <h4><b>Jesse Perring</b></h4>
+                                  <h4><b>{{client}}</b></h4>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  <h4><i>64 Living Space Avenue, Nowhere, KS, 12346</i></h4>
+                                  <h4><i>{{address}}</i></h4>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  <h4>Example Item 3</h4>
+                                  <h4>{{item}}</h4>
                               </div>
                           </div>
                           <div class="row">
                             <div class="col-md-12">
-                              Details on Example Item 3
+                              {{details}}
                             </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  Paying: $1,000.01
+                                  Paying: ${{offer}}
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-12">
-                                  Store Y, 98 Main Street, Nowhere, KS, 12345
+                                  {{place}}
                               </div>
                           </div>
                       </div>
                       <div class="col-md-3">
                           <div class="row">
                               <div class="col-md-12">
-                                  <h5 class="text-center">Not Yet Retrieved<h5>
+                                  <h5 class="text-center">
+                                    {{#if accepted}}Accepted{{/if}}
+                                    {{#if purchased}}Purchased{{/if}}
+                                    {{#if delivered}}Delivered{{/if}}
+                                  <h5>
                               </div>
                           </div>
                           <div class="row">
@@ -230,56 +209,8 @@
                   </div>
               </div>
           </div>
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="panel">
-                      <div class="col-md-9">
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h4><b>Tim the Beaver</b></h4>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h4><i>77 Massachusetts Avenue, Cambridge, MA, 02139</i></h4>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h4>Example Item 4</h4>
-                              </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              Details on Example Item 4
-                            </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  Paying: $10.00
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                  No store preference.
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-3">
-                          <div class="row">
-                              <div class="col-md-12">
-                                  <h5 class="text-center">Payment received!</h5>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12 text-center">
-                                  <button type="button" class="btn btn-info button-center-vertical">Venmo</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+          {{/each}}
+
       </div>
   </div>
   <br>
