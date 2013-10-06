@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var CONNECTION_STRING = "mongodb://localhost";
+var CONNECTION_STRING = "mongodb://nodejitsu_ericschmidt:rbkehkot5da21686s6vag70l8f@ds045998.mongolab.com:45998/nodejitsu_ericschmidt_nodejitsudb5211104003";
 mongoose.connect(CONNECTION_STRING);
 var User;
 var db = mongoose.connection;
