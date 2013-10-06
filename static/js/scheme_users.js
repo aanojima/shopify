@@ -20,10 +20,7 @@ function initialize(){
 		},
 		biography: String,
 		password: String,
-		payment: {
-			service: String,
-			serial: String
-		}
+		payment: String
 	});
 
 	User = mongoose.model("User", UserSchema, "Users");

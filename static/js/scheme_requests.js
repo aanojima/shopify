@@ -10,10 +10,16 @@ function initialize(){
 
 	var RequestSchema = mongoose.Schema({
 		id : String,
+		agent: String
+		client: String,
+		approved: Boolean,
+		purchased: Boolean,
+		delivered: Boolean,
+		done: Boolean
 		email : String
-		title : String,
+		item : String,
 		details : String,
-		price : double,
+		offer : double,
 		date: Date,
 		place : Object
 	});
