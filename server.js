@@ -2,8 +2,8 @@ var express = require('express')
     http = require('http'),
     exphbs = require('express3-handlebars'),
     path = require('path'),
-    usersPath = require('./js/scheme_users'),
-    requestsPath = require('./js/scheme_requests');
+    usersPath = require('./static/js/scheme_users'),
+    requestsPath = require('./static/js/scheme_requests');
 
 var app = express();
 
