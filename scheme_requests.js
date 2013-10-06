@@ -9,31 +9,25 @@ db.once('open', initialize);
 function initialize(){
 
 	var RequestSchema = mongoose.Schema({
+		id : String,
+		email : String
 		title : String,
 		details : String,
 		price : double,
-		place : String
+		date: Date,
+		place : Object
 	});
 
 	Request = mongoose.model("Request", RequestSchema, "Requests");
-	main();
 
 }
 
-function findOneRequest(field, value){
-	var output;
-	Request.findOne({field : value}), function(err, doc){
-		output = doc;
-	});
-	return output;
+function findOneRequest(field, value, callback){
+	Request.findOne({field : value}, callback);
 }
 
-function findRequests(field, value){
-	var output;
-	Request.find({field: value}, function(err, doc){
-		output = doc;
-	});
-	return output;
+function findRequests(field, value, callback){
+	Request.find({field: value}, callback);
 }
 
 function removeRequest(field, value){

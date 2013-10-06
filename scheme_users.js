@@ -19,7 +19,6 @@ function initialize(){
 			mobile_number: String
 		},
 		biography: String,
-		date: Date,
 		password: String,
 		payment: {
 			service: String,
@@ -28,23 +27,17 @@ function initialize(){
 	});
 
 	User = mongoose.model("User", UserSchema, "Users");
-	main();
 
 }
 
-function findOneUser(email){
+function findOneUser(email, callback){
 	var output;
-	User.findOne({"email" : email}), function(err, doc){
-		output = doc;
-	});
-	return output;
+	User.findOne({"email" : email}, callback);
 }
 
-function findUsers(field, value){
+function findUsers(field, value, callback){
 	var output;
-	User.find({field: value}, function(err, doc){
-		output = doc;
-	});
+	User.find({field: value}, callback);
 	return output;
 }
 
